@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chota Babu vs Chota Baby - Rock Paper Scissors</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fbeaff;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #b30086;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            background-color: #ff4dd2;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #cc3399;
+        }
+        #result {
+            margin-top: 30px;
+            font-size: 24px;
+            color: #660066;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎮 Chota Babu vs Chota Baby 🎮</h1>
+    <p>Choose your move:</p>
+    <button onclick="play('rock')">🪨 Rock</button>
+    <button onclick="play('paper')">📄 Paper</button>
+    <button onclick="play('scissors')">✂️ Scissors</button>
+
+    <div id="result"></div>
+
+    <script>
+        function play(userChoice) {
+            const choices = ['rock', 'paper', 'scissors'];
+            const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+            let message = '';
+
+            if (userChoice === computerChoice) {
+                message = `😅 It's a draw! Try again, Chota Babu.`;
+            } else if (
+                (userChoice === 'rock' && computerChoice === 'scissors') ||
+                (userChoice === 'scissors' && computerChoice === 'paper') ||
+                (userChoice === 'paper' && computerChoice === 'rock')
+            ) {
+                message = '🥳 Ale waah mele babu!';
+            } else {
+                message = '💃 Ti li li li 💃💃💃';
+            }
+
+            document.getElementById('result').innerHTML = `
+                <p>🧍‍♂️ Chota Babu chose: <b>${userChoice}</b></p>
+                <p>🧠 Chota Baby chose: <b>${computerChoice}</b></p>
+                <p><b>${message}</b></p>
+            `;
+        }
+    </script>
+</body>
+</html>
